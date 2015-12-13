@@ -1,17 +1,18 @@
 package cz.muni.fi.pa165.sample;
 
 import java.util.Arrays;
-import java.util.Date;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import cz.muni.fi.pa165.dto.CreateBookCollectionDTO;
 import cz.muni.fi.pa165.dto.CreateBookDTO;
+import cz.muni.fi.pa165.dto.CreateLoanDTO;
 import cz.muni.fi.pa165.dto.MemberDTO;
 import cz.muni.fi.pa165.dto.MemberRegisterDTO;
 import cz.muni.fi.pa165.facade.BookCollectionFacade;
 import cz.muni.fi.pa165.facade.BookFacade;
+import cz.muni.fi.pa165.facade.LoanFacade;
 import cz.muni.fi.pa165.facade.MemberFacade;
 
 @Named
@@ -24,6 +25,9 @@ public class SampleDataLoader {
 
     @Inject
     MemberFacade memberFacade;
+    
+    @Inject
+    LoanFacade loanFacade;
 
     public void createSampleData() {
         Long b1 = book("東方文花帖", "ZUN", 4758010374L);
@@ -53,11 +57,18 @@ public class SampleDataLoader {
         member.setEmail("email@email.com");
         member.setGivenName("peter");
         member.setSurname("cibula");
-        member.setRegistrationDate(new Date());
 
         MemberRegisterDTO memberRegister = new MemberRegisterDTO();
         memberRegister.setMember(member);
-        memberRegister.setPassword("12345");
-        memberFacade.registerMember(memberRegister);
+        memberRegister.setPassword("12345");       
+        Long memberId = memberFacade.registerMember(memberRegister);
+        createLoan(memberId);
+    }
+    
+    private void createLoan(Long memberId){
+        CreateLoanDTO loan = new CreateLoanDTO();
+        loan.setBookId(1L);
+        loan.setMemberId(memberId);
+        loanFacade.createLoan(loan);
     }
 }

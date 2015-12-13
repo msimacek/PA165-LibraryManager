@@ -55,8 +55,9 @@ public interface MemberFacade {
     /**
      * Registers new member
      * @param memberReg DTO object containing registration data
+     * @return id of new member
      */
-    void registerMember(MemberRegisterDTO memberReg);
+    Long registerMember(MemberRegisterDTO memberReg);
 
     /**
      * Checks if member has admin permissions

@@ -29,7 +29,6 @@ public class Member {
     @Column(nullable = false)
     private String givenName;
 
-    @Column(nullable = false)
     private String surname;
 
     @Column(nullable = false)
@@ -38,11 +37,12 @@ public class Member {
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date registrationDate;
-
+    
+    @Column(nullable = false)
+    private String passwordHash;
+    
     @OneToMany
     private List<Loan> loans = new ArrayList<>();
-
-    private String passwordHash;
 
     @Column(nullable = false)
     private boolean isAdmin = false;

@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,6 +66,7 @@ public class MemberServiceImpl implements MemberService {
         if (password.isEmpty()) {
             throw new LibraryServiceException("Password may not be empty");
         }
+        member.setRegistrationDate(new Date());
         member.setPasswordHash(makeSha1Hash(password));
         memberDao.create(member);
     }

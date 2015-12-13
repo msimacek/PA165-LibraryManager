@@ -54,9 +54,9 @@ public class MemberDTO {
     public Date getRegistrationDate() {
         return registrationDate;
     }
-
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
+    
+    public void setRegistrationDate(Date date) {
+        this.registrationDate = date;
     }
 
     public boolean isAdmin() {
@@ -119,5 +119,5 @@ public class MemberDTO {
             return false;
         }
         return true;
-    }
+    }    
 }

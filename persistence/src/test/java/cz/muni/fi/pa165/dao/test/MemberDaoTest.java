@@ -43,12 +43,14 @@ public class MemberDaoTest {
         member1.setGivenName("Blanka");
         member1.setSurname("Protrhla");
         member1.setEmail("BerUska15@pokec.sk");
+        member1.setPasswordHash("hash");
         Date date = new Date(0);
         member1.setRegistrationDate(date);
         member2 = new Member();
         member2.setGivenName("Petr");
         member2.setSurname("Soustal");
         member2.setEmail("soustal@gmail.com");
+        member2.setPasswordHash("hash");
         date = new Date(2);
         member2.setRegistrationDate(date);
         em.persist(member1);

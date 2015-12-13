@@ -7,9 +7,9 @@ package cz.muni.fi.pa165.dto;
  */
 public class MemberRegisterDTO {
 
-    private MemberDTO member;
+    private MemberDTO member = new MemberDTO(); 
     private String password;
-
+    
     public MemberRegisterDTO() {
     }
 
@@ -33,4 +33,4 @@ public class MemberRegisterDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-}
+    }
