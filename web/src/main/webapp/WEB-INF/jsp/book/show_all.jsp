@@ -14,6 +14,9 @@
 
 <x:base title="Library book listing">
     <jsp:attribute name="content">
+        <sec:authorize access="hasRole('ADMIN')">
+            <a href="<c:url value="/books/create"/>" class="btn btn-default">Create Book</a>
+        </sec:authorize>
         <h1>Books</h1>
         <x:filter/>
         <table class="table table-default filtered">
@@ -42,8 +45,6 @@
                 </c:forEach>
             </tbody>
         </table>
-        <sec:authorize access="hasRole('ADMIN')">
-            <a href="<c:url value="/books/create"/>" class="btn btn-default">Create Book</a>
-        </sec:authorize>
+        
     </jsp:attribute>
 </x:base>

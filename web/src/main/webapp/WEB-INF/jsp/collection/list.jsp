@@ -4,9 +4,15 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="x"%>
 <x:base title="Book collection listing">
     <jsp:attribute name="content">
+        
+        <sec:authorize access="hasRole('ADMIN')">
+            <a href="<c:url value="/collection/create"/>" class="btn btn-default">Create book collection</a>
+        </sec:authorize>
+        
         <h1>
             Book collection listing
         </h1>
+        
         <div class="panel panel-default">
             <table class="table">
                 <thead>
@@ -29,8 +35,6 @@
                 </tbody>
             </table>
         </div>
-        <sec:authorize access="hasRole('ADMIN')">
-            <a href="<c:url value="/collection/create"/>" class="btn btn-default">Create book collection</a>
-        </sec:authorize>
+        
     </jsp:attribute>
 </x:base>

@@ -8,8 +8,13 @@
         Members - list
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>Members</h1>
+        <div cssClass="form-control">
 
+            <a href="create" class="btn btn-default">Create member</a>
+
+        </div>
+        <h1>Members</h1>
+        
         <div class="panel panel-default">
             <x:filter/>
             <table class="table filtered">
@@ -35,11 +40,7 @@
         </div>
 
 
-        <div cssClass="form-control">
-
-            <a href="create" class="btn btn-default">Create member</a>
-
-        </div>
+        
 
     </jsp:attribute>
 </x:base>

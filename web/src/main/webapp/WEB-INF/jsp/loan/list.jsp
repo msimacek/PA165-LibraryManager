@@ -8,11 +8,9 @@
 
 <x:base title="Loan listing">
     <jsp:attribute name="content">
-    <x:loanTable loans="${loans}" showMember="true" showBook="true" showReturn="true"/>
-
     <c:if test="${member.isAdmin()}">
         <a href="${pageContext.request.contextPath}/loans/new" class="btn btn-default">New loan</a>
     </c:if>
-
+    <x:loanTable loans="${loans}" showMember="true" showBook="true" showReturn="true"/>
 </jsp:attribute>
 </x:base>
