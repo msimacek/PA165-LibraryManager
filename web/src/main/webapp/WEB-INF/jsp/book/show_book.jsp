@@ -9,8 +9,6 @@
         <c:out value="${book.name}" /> - book detail
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>
-            <c:out value="${book.name}" /> - book detail</h1>
         <table class="table table-default">
             <tr>
                 <td class="key">Author name</td>

@@ -6,8 +6,8 @@
 <%@ page import="cz.muni.fi.pa165.enums.BookState" %>
 
 <x:base title="Return loan">
+  <jsp:attribute name="title">Return book - <c:out value="${loan.book.name}" /></jsp:attribute>
   <jsp:attribute name="content">
-    <h1>Return book - <c:out value="${loan.book.name}" /></h1>
       <form method="POST">
         <div class="input-group">
           <label for="state">Choose state in which book was returned</label>

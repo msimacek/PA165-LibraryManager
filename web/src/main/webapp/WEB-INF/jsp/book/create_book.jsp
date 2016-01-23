@@ -8,9 +8,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="x"%>
 <%@ page import="cz.muni.fi.pa165.enums.BookState" %>
-<x:base title="Members search result">
+<x:base title="Create new book">
     <jsp:attribute name="content">
-    <h1>Create new book</h1>
 	<form:form method="POST" modelAttribute="createBook">
 		<div class="form-group">
                         <div class="form-group">

@@ -31,7 +31,6 @@
         </script>
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>${action} book collection</h1>
         <form:form method="POST" modelAttribute="collection"
             onSubmit="prepareBooks()">
             <div class="form-group">

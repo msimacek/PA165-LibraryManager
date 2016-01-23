@@ -6,7 +6,6 @@
         Log in
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>Log in</h1>
         <c:if test="${param.error != null}">
         <div>Invalid credentials.</div>
     </c:if>

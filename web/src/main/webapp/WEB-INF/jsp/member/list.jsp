@@ -5,7 +5,7 @@
 
 <x:base>
     <jsp:attribute name="title">
-        Members - list
+        Members
     </jsp:attribute>
     <jsp:attribute name="content">
         <div cssClass="form-control">
@@ -13,8 +13,6 @@
             <a href="create" class="btn btn-default">Create member</a>
 
         </div>
-        <h1>Members</h1>
-        
         <div class="panel panel-default">
             <x:filter/>
             <table class="table filtered">

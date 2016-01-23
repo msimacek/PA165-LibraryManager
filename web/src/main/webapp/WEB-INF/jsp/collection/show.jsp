@@ -7,9 +7,6 @@
         <c:out value="${collection.name}" /> - book collection details
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>
-            <c:out value="${collection.name}" /> - book collection details
-        </h1>
         <div class="panel panel-default">
         <div class="panel-heading">Books in collection</div>
             <table class="table">

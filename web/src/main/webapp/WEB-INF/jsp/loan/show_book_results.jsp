@@ -7,7 +7,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<x:base title="Books search result">
+<x:base title="Books search results">
     <jsp:attribute name="content">
 
         <table class="table">

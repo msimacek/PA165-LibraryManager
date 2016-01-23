@@ -11,7 +11,6 @@
         ${name} - member detail
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>${name}</h1>
         <table class="table table-default">
             <tr>
                 <td class="key">ID</td>

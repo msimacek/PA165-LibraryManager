@@ -6,7 +6,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="x" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<x:base title="Members search result">
+<x:base title="Members search results">
     <jsp:attribute name="content">
         <table class="table">
             <thead>

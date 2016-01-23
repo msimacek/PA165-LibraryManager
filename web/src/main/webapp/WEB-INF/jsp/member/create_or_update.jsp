@@ -17,7 +17,6 @@
         </script>
     </jsp:attribute>
     <jsp:attribute name="content">
-        <h1>${action} member</h1>
         <form:form method="POST" onSubmit="return checkPassword()" modelAttribute="member">
             <div class="form-group">
                 <div class="form-group">

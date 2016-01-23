@@ -6,7 +6,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="x" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<x:base title="New loan creation">
+<x:base title="Create new loan">
 <jsp:attribute name="content">
 <form method="GET" action="${pageContext.request.contextPath}/loans/find_book">
     <div class="form-group">
