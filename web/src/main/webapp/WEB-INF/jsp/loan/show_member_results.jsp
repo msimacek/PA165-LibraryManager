@@ -8,11 +8,6 @@
 
 <x:base title="Members search result">
     <jsp:attribute name="content">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
         <table class="table">
             <thead>
             <tr>
@@ -20,6 +15,7 @@
                 <th>Given name</th>
                 <th>Surname</th>
                 <th>Email</th>
+                <th></th>
             </tr>
             </thead>
 
@@ -33,7 +29,6 @@
                     <td>
                         <a href="${pageContext.request.contextPath}/loans/new?memberId=${member.id}&bookId=${param.book}"
                            class="btn btn-default">Choose</a>
-                    <td>
                     </td>
                 </tr>
             </c:forEach>

@@ -85,7 +85,7 @@ public class LoanController {
             RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
         if (createLoan.getMemberId() == null || createLoan.getBookId() == null) {
             redirectAttributes.addFlashAttribute("alert_warning", "Member or book has not been chosen");
-            return "redirect:" + uriBuilder.path("/loans/create").toUriString();
+            return "redirect:" + uriBuilder.path("/loans/new").toUriString();
         }
 
         loanFacade.createLoan(createLoan);
