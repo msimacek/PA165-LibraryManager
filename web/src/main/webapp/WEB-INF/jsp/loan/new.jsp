@@ -56,6 +56,14 @@
         </div>
     </div>
 </form>
+<form:form method="POST" action="${pageContext.request.contextPath}/loans/create" modelAttribute="createLoan"
+onSubmit="prepareBooks()">
+    <div>
+        <form:hidden path="memberId"/>
+                    <form:hidden path="bookId" id="selected-books"/>
+    </div>
+    <button type="submit" class="btn btn-default">Create</button>
+    </form:form>
 <form>
 <div class="panel panel-default">
                 <div class="panel-body">Add books to loan by clicking on them
@@ -116,13 +124,6 @@
                 </div>
             </div>
 </form>
-<form:form method="POST" action="${pageContext.request.contextPath}/loans/create" modelAttribute="createLoan"
-onSubmit="prepareBooks()">
-    <div>
-        <form:hidden path="memberId"/>
-                    <form:hidden path="bookId" id="selected-books"/>
-    </div>
-    <button type="submit" class="btn btn-default">Create</button>
-    </form:form>
+
     </jsp:attribute>
     </x:base>

@@ -42,6 +42,7 @@
                 <div class="panel-body">Add books to collection by clicking on them
                     in "Available books" table.</div>
             </div>
+            <button type="submit" class="btn btn-default">${action} book collection</button>
             <div class="row">
                 <div class="col-xs-6">
                     <div class="panel panel-default" id="available-panel">
@@ -97,7 +98,6 @@
                 </div>
             </div>
             <form:hidden path="bookIds" id="selected-books"/>
-            <button type="submit" class="btn btn-default">${action} book collection</button>
         </form:form>
 </jsp:attribute>
 </x:base>
