@@ -2,14 +2,17 @@ package cz.muni.fi.pa165.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,29 +68,32 @@ public class LoanController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String newLoan(@RequestParam(required = false) Long bookId, @RequestParam(required = false) Long memberId,
-            Model model) {
-        if (bookId != null) {
-            BookDTO book = bookFacade.findById(bookId);
-            model.addAttribute("book", book);
+    public String newLoan(@ModelAttribute CreateLoanDTO dto, Model model) {
+        List<BookDTO> allBooks = bookFacade.findAll().stream().filter(b -> !b.isLoaned()).collect(Collectors.toList());
+        model.addAttribute("allBooks", allBooks);
+        List<BookDTO> books = new ArrayList<>();
+        if (dto.getBookId() != null) {
+            for (Long id : dto.getBookId()) {
+                BookDTO book = bookFacade.findById(id);
+                books.add(book);
+            }
         }
-        if (memberId != null) {
-            MemberDTO member = memberFacade.findById(memberId);
+        model.addAttribute("books", books);
+        if (dto.getMemberId() != null) {
+            MemberDTO member = memberFacade.findById(dto.getMemberId());
             model.addAttribute("member", member);
         }
 
-        model.addAttribute("createLoan", new CreateLoanDTO());
+        model.addAttribute("createLoan", dto);
         return "loan/new";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createLoan(@ModelAttribute("createLoan") CreateLoanDTO createLoan, Model model,
-            RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
-        if (createLoan.getMemberId() == null || createLoan.getBookId() == null) {
-            redirectAttributes.addFlashAttribute("alert_warning", "Member or book has not been chosen");
-            return "redirect:" + uriBuilder.path("/loans/new").toUriString();
+    public String createLoan(@Valid @ModelAttribute("createLoan") CreateLoanDTO createLoan, BindingResult result,
+            Model model, RedirectAttributes redirectAttributes, UriComponentsBuilder uriBuilder) {
+        if (result.hasErrors()) {
+            return newLoan(createLoan, model);
         }
-
         loanFacade.createLoan(createLoan);
         redirectAttributes.addFlashAttribute("alert_success", "New loan was created");
         return "redirect:" + uriBuilder.path("/loans/list").toUriString();

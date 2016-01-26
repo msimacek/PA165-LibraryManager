@@ -1,7 +1,10 @@
 package cz.muni.fi.pa165.dto;
 
 import java.util.List;
+
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Data Transfer object for create of Loan entity
@@ -15,6 +18,7 @@ public class CreateLoanDTO {
     private Long memberId;
 
     @NotNull
+    @NotEmpty
     private List<Long> bookId;
 
     public Long getMemberId() {

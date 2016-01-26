@@ -27,7 +27,7 @@
                     <td><c:out value="${member.surname}"/></td>
                     <td><c:out value="${member.email}"/></td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/loans/new?memberId=${member.id}&bookId=${param.book}"
+                        <a href="${pageContext.request.contextPath}/loans/new?memberId=${member.id}"
                            class="btn btn-default">Choose</a>
                     </td>
                 </tr>
