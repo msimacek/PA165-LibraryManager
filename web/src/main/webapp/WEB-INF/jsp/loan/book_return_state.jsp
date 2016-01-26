@@ -5,7 +5,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="x"%>
 <%@ page import="cz.muni.fi.pa165.enums.BookState" %>
 
-<x:base title="Return loan">
+<x:base>
   <jsp:attribute name="title">Return book - <c:out value="${loan.book.name}" /></jsp:attribute>
   <jsp:attribute name="content">
       <form method="POST">
