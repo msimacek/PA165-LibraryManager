@@ -1,0 +1,2 @@
+[Unregistered user]-(Search for books), [Unregistered user]-(View book collections), [Member]-(Sign In), [Member]-(View own profile and loans), [Member]-(Update own profile), [Administrator]-(Manage books), [Administrator]-(Manage book collections), [Administrator]-(Manage members), [Administrator]^[Member], [Member]^[Unregistered user]
+[Administrator]-(Manage loans)
