@@ -1,5 +1,6 @@
 package cz.muni.fi.pa165.dto;
 
+import java.util.List;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -14,7 +15,7 @@ public class CreateLoanDTO {
     private Long memberId;
 
     @NotNull
-    private Long bookId;
+    private List<Long> bookId;
 
     public Long getMemberId() {
         return memberId;
@@ -24,11 +25,11 @@ public class CreateLoanDTO {
         this.memberId = memberId;
     }
 
-    public Long getBookId() {
+    public List<Long> getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(List<Long> bookId) {
         this.bookId = bookId;
     }
 

@@ -13,6 +13,8 @@ import cz.muni.fi.pa165.facade.BookCollectionFacade;
 import cz.muni.fi.pa165.facade.BookFacade;
 import cz.muni.fi.pa165.facade.LoanFacade;
 import cz.muni.fi.pa165.facade.MemberFacade;
+import java.lang.reflect.Array;
+import java.util.List;
 
 @Named
 public class SampleDataLoader {
@@ -146,9 +148,9 @@ public class SampleDataLoader {
         return memberFacade.registerMember(memberRegister);
     }
 
-    private Long loan(Long memberId, Long bookId) {
+    private List<Long> loan(Long memberId, Long bookId) {
         CreateLoanDTO loan = new CreateLoanDTO();
-        loan.setBookId(bookId);
+        loan.setBookId(Arrays.asList(new Long[] {bookId}));
         loan.setMemberId(memberId);
         return loanFacade.createLoan(loan);
     }

@@ -16,6 +16,7 @@ import cz.muni.fi.pa165.enums.BookState;
 import cz.muni.fi.pa165.service.BookService;
 import cz.muni.fi.pa165.service.LoanService;
 import cz.muni.fi.pa165.service.MemberService;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,22 +31,26 @@ public class LoanFacadeImpl implements LoanFacade {
 
     @Inject
     private LoanService loanService;
-    
+
     @Inject
     private MemberService memberService;
-    
+
     @Inject
     private BookService bookService;
 
     @Override
-    public Long createLoan(CreateLoanDTO loan) {
+    public List<Long> createLoan(CreateLoanDTO loan) {
+        List<Long> result = new ArrayList<>();
+        for(Long bookId : loan.getBookId()){
         Loan newLoan = mapper.map(loan, Loan.class);
-        Member member = memberService.findById(loan.getMemberId());
-        newLoan.setMember(member);
-        Book book = bookService.findById(loan.getBookId());
-        newLoan.setBook(book);
-        loanService.create(newLoan);
-        return newLoan.getId();
+            Member member = memberService.findById(loan.getMemberId());
+            newLoan.setMember(member);
+            Book book = bookService.findById(bookId);
+            newLoan.setBook(book);
+            loanService.create(newLoan);
+            result.add(newLoan.getId());
+        }
+        return result;
     }
 
     @Override

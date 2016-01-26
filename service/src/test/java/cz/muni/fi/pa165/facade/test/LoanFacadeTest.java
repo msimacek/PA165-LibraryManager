@@ -27,6 +27,7 @@ import cz.muni.fi.pa165.facade.LoanFacade;
 import cz.muni.fi.pa165.service.BookService;
 import cz.muni.fi.pa165.service.LoanService;
 import cz.muni.fi.pa165.service.MemberService;
+import java.util.Arrays;
 
 
 /**
@@ -58,7 +59,7 @@ public class LoanFacadeTest {
         when(memberServiceMock.findById(1L)).thenReturn(member);
         when(bookServiceMock.findById(1L)).thenReturn(book);
         CreateLoanDTO loan = new CreateLoanDTO();
-        loan.setBookId(1L);
+        loan.setBookId(new ArrayList(Arrays.asList(1L)));
         loan.setMemberId(1L);
         facade.createLoan(loan);
         verify(loanServiceMock).create(captor.capture());
