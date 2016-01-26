@@ -13,6 +13,7 @@ import cz.muni.fi.pa165.entity.Book;
 import cz.muni.fi.pa165.entity.Loan;
 import cz.muni.fi.pa165.entity.Member;
 import cz.muni.fi.pa165.enums.BookState;
+import cz.muni.fi.pa165.exceptions.LibraryServiceException;
 import cz.muni.fi.pa165.service.BookService;
 import cz.muni.fi.pa165.service.LoanService;
 import cz.muni.fi.pa165.service.MemberService;
@@ -39,10 +40,13 @@ public class LoanFacadeImpl implements LoanFacade {
     private BookService bookService;
 
     @Override
-    public List<Long> createLoan(CreateLoanDTO loan) {
+    public List<Long> createLoan(CreateLoanDTO loan) throws LibraryServiceException {
+        if(loan.getBookId().isEmpty()){
+            throw new LibraryServiceException("List of book ids cannot be empty");
+        }
         List<Long> result = new ArrayList<>();
-        for(Long bookId : loan.getBookId()){
-        Loan newLoan = mapper.map(loan, Loan.class);
+        for (Long bookId : loan.getBookId()) {
+            Loan newLoan = mapper.map(loan, Loan.class);
             Member member = memberService.findById(loan.getMemberId());
             newLoan.setMember(member);
             Book book = bookService.findById(bookId);
