@@ -29,4 +29,8 @@ public class ListMapper {
         }
         return result;
     }
+
+    public void map(Object source, Object destination) {
+        mapper.map(source, destination);
+    }
 }

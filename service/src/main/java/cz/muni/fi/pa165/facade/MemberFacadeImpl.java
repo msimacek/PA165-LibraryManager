@@ -90,9 +90,7 @@ public class MemberFacadeImpl implements MemberFacade {
     @Override
     public void updateMember(Long id, InputMemberDTO memberToUpdate) {
         Member member = service.findById(id);
-        member.setGivenName(memberToUpdate.getGivenName());
-        member.setSurname(memberToUpdate.getSurname());
-        member.setIsAdmin(memberToUpdate.isAdmin());
+        mapper.map(memberToUpdate, member);
         service.update(member, memberToUpdate.getPassword());
     }
 }
