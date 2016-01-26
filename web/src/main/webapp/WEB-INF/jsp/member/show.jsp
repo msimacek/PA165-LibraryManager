@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="x"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <c:set var="name">
     <c:out value="${member.givenName}" />
     <c:out value="${member.surname}" />
@@ -40,6 +41,8 @@
             <x:loanTable loans="${returnedloans}" showBook="true" showReturn="true"/>
         </div>
         <a href="${member.id}/update" class="btn btn-default">Update member</a>
-        <a href="${member.id}/delete" class="btn btn-default">Delete member</a>
+        <sec:authorize access="hasRole('ADMIN')">
+            <a href="${member.id}/delete" class="btn btn-default">Delete member</a>
+        </sec:authorize>
     </jsp:attribute>
 </x:base>
