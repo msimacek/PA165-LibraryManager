@@ -139,30 +139,6 @@ public class LoanController {
         return "loan/book_return_state";
     }
 
-    @RequestMapping(value = "/find_book", method = RequestMethod.GET)
-    public String findBook(@RequestParam String book, Model model) {
-        List<BookDTO> allBooks = bookFacade.findAll();
-
-        String regex = "[0-9]+";
-        List<BookDTO> foundBooks = new ArrayList<>();
-        for (BookDTO item : allBooks) {
-            if (item.getName().toLowerCase().contains(book.toLowerCase())
-                    || item.getAuthorName().toLowerCase().contains(book.toLowerCase())
-                    || book.toLowerCase().contains(item.getName().toLowerCase())
-                    || book.toLowerCase().contains(item.getAuthorName().toLowerCase())) {
-                foundBooks.add(item);
-            }
-            if (book.matches(regex)) {
-                if (item.getIsbn().equals(Long.valueOf(book))) {
-                    foundBooks.add(item);
-                }
-            }
-        }
-
-        model.addAttribute("books", foundBooks);
-        return "loan/show_book_results";
-    }
-
     @RequestMapping(value = "/find_member", method = RequestMethod.GET)
     public String findMember(@RequestParam String member, Model model) {
         List<MemberDTO> allMembers = memberFacade.findAll();
