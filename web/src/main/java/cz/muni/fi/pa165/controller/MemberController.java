@@ -135,7 +135,12 @@ public class MemberController {
         }
 
         checkCanSetAdmin(currentUser, dto);
-        facade.updateMember(id, dto);
+        try {
+            facade.updateMember(id, dto);
+        } catch (DataIntegrityViolationException e) {
+            redirectAttrs.addFlashAttribute("alert_warning", "Member with given email address already exists.");
+            return "redirect:" + uriBuilder.path("/member/{id}/update").buildAndExpand(id).encode().toUriString();
+        }
 
         redirectAttrs.addFlashAttribute("alert_success", "Member with id = " + id + " was successfuly updated");
         return "redirect:" + uriBuilder.path("/member/{id}").buildAndExpand(id).encode().toUriString();
@@ -149,7 +154,8 @@ public class MemberController {
     }
 
     @RequestMapping(path = "/{id}/delete")
-    public String deleteMember(@AuthenticationPrincipal MemberUserDetailsAdapter currentUser, @PathVariable long id, Model model) {
+    public String deleteMember(@AuthenticationPrincipal MemberUserDetailsAdapter currentUser, @PathVariable long id,
+            Model model) {
         checkCanView(currentUser, id);
         facade.deleteMember(id);
         return "redirect:/";
