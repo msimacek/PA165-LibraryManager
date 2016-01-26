@@ -103,25 +103,6 @@ public class SampleDataLoader {
         loan(m3, b11);
         loan(m4, b12);
         loan(m5, b13);
-        loan(m6, b14);
-        loan(m7, b15);
-        loan(m8, b16);
-        loan(m1, b17);
-        loan(m2, b18);
-        loan(m3, b19);
-        loan(m4, b20);
-        loan(m5, b21);
-        loan(m6, b22);
-        loan(m7, b23);
-        loan(m8, b24);
-        loan(m1, b25);
-        loan(m2, b26);
-        loan(m3, b27);
-        loan(m4, b28);
-        loan(m5, b29);
-        loan(m6, b30);
-        loan(m7, b31);
-        loan(m8, b32);
     }
 
     private Long book(String name, String authorName, Long isbn) {
