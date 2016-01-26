@@ -8,5 +8,5 @@ public class BookStateConstants {
     public static final String LIGHT_DAMAGE = "Lightly damaged";
     public static final String MEDIUM_DAMAGE = "Moderately damaged";
     public static final String HEAVY_DAMAGE = "Heavily damaged";
-    public static final String REMOVED = "Removed";
+    public static final String REMOVED = "Missing";
 }
