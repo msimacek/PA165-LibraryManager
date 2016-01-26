@@ -149,7 +149,8 @@ public class LoanController {
                     || member.toLowerCase().contains(item.getGivenName().toLowerCase())
                     || item.getSurname().toLowerCase().contains(member.toLowerCase())
                     || item.getGivenName().toLowerCase().contains(member.toLowerCase())
-                    || member.toLowerCase().equals(item.getEmail().toLowerCase())) {
+                    || member.toLowerCase().contains(item.getEmail().toLowerCase())
+                    || item.getEmail().toLowerCase().contains(member.toLowerCase())) {
                 foundMembers.add(item);
             }
         }
